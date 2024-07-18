@@ -88,6 +88,12 @@ class Plugable {
 		self::$filter[$event][] = $array;
 	}
 
+	/**
+	 * fire function to handle all filters set on $event
+	 * @param string $event event name
+	 * @param string $func function name to manipulate all the filters added to $event
+	 * @return callback
+	 */
 	public static function doFilter($event, $func) {
 		if (isset(self::$filter[$event]) && function_exists($func)) {
 			return $func(self::$filter[$event]);
